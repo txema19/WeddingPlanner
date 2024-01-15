@@ -26,7 +26,7 @@ public class ServicioEntity {
 	private Double precio;
 	private Integer id_curso;
 	
-//	@ManyToOne 
-//	@JoinColumn(name = "id_proveedor")
-//	private ProveedorEntity proveedor;
+	@ManyToOne 
+	@JoinColumn(name = "id_proveedor")
+	private ProveedorEntity proveedor;
 }

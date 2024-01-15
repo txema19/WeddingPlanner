@@ -21,16 +21,20 @@ public class ServicioServiceImpl implements ServicioService{
 	
 	
 	@Override
-	public void agregarServico(ServicioDTO servicioDTO) {
+	public ServicioDTO agregarServicio(ServicioDTO servicioDTO) {
 		
-		//ServicioEntity servicioEntity = servicioRepository.save(servicioMappers.mapToServicioEntity(servicioDTO));
-		
+		ServicioEntity servicioEntity = servicioRepository.save(servicioMappers.mapToServicioEntity(servicioDTO));
+	
+		return servicioMappers.mapToServicioDTO(servicioEntity);
 	
 	}
 
 	@Override
 	public List<ServicioDTO> mostrarTodosLosServicios() {
-		// TODO Auto-generated method stub
+		
+		List<ServicioEntity> listaServicos = servicioRepository.findAll();
+		
+		List<ServicioDTO> listaPasajerosDTO = servicioMappers.listaToDTO(listaServicos);
 		return null;
 	}
 
