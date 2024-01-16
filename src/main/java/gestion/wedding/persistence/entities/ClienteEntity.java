@@ -1,31 +1,25 @@
 package gestion.wedding.persistence.entities;
 
-
-import java.util.List;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class ProveedorEntity {
+public class ClienteEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
-	private int idProveedor;
+	private Integer cod_cliente;
 	private String nombre;
-	private String dirreccion;
-	private String tln;
+	private String email;
+	private String dir;
+	private String tlf;
 	
-	@OneToMany(mappedBy = "proveedor")
-	private List<ServicioEntity> servicios;
-	
-
 }

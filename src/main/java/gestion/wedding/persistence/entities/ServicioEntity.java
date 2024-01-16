@@ -1,6 +1,5 @@
 package gestion.wedding.persistence.entities;
 
-import gestion.wedding.model.ServicioDTO;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -24,7 +23,6 @@ public class ServicioEntity {
 	private Integer id_servicio;
 	private String nombre;
 	private Double precio;
-	private Integer id_curso;
 	
 	@ManyToOne 
 	@JoinColumn(name = "id_proveedor")
