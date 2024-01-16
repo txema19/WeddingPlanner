@@ -3,11 +3,10 @@ package gestion.wedding;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+
 @SpringBootApplication
 public class WeddingPlannerApplication {
-
-	public static void main(String[] args) {
-		SpringApplication.run(WeddingPlannerApplication.class, args);
-	}
-
+    public static void main(String[] args) {
+        SpringApplication.run(WeddingPlannerApplication.class, args);
+    }
 }

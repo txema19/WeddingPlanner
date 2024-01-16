@@ -25,7 +25,7 @@ public class ServicioEntity {
 	private String nombre;
 	private Double precio;
 	private Integer id_curso;
-	
+
 	@ManyToOne 
 	@JoinColumn(name = "id_proveedor")
 	private ProveedorEntity proveedor;

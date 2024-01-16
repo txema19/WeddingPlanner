@@ -23,7 +23,7 @@ public interface ServicioMappers {
 	@Named("mapProveedorid")
 	default Integer mapProveedorid(ProveedorEntity proveedorEntity) {
 		if (proveedorEntity != null) {
-			return proveedorEntity.getIdProveedor();
+			return proveedorEntity.getId_proveedor();
 		}
 		return null;
 	}
