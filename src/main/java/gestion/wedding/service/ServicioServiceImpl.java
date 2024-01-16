@@ -35,7 +35,8 @@ public class ServicioServiceImpl implements ServicioService{
 		List<ServicioEntity> listaServicos = servicioRepository.findAll();
 		
 		List<ServicioDTO> listaPasajerosDTO = servicioMappers.listaToDTO(listaServicos);
-		return null;
+		
+		return listaPasajerosDTO;
 	}
 
 }
