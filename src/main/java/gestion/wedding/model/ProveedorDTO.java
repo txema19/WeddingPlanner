@@ -17,7 +17,6 @@ public class ProveedorDTO {
 	private String nombre;
 	private String dirreccion;
 	private String tln;
-	
 	private List<ServicioDTO> servicio;
 
 	

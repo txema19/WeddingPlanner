@@ -27,7 +27,7 @@ public class ServicioController {
 		
 		ServicioDTO servicio = servicioService.agregarServicio(ServicioDTO);
 		
-		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/"+servicio.getNombre()).buildAndExpand(servicio.getNombre())
+		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/"+servicio.getId_servicio()).buildAndExpand(servicio.getNombre())
 				.toUri();
 		
 		return ResponseEntity.created(location).build();

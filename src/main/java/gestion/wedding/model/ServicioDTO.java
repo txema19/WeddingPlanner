@@ -13,6 +13,7 @@ public class ServicioDTO {
 	private String nombre;
 	private Double precio;
 	private Integer idProveedor;
+	private Integer idEvento;
 	
 
 }

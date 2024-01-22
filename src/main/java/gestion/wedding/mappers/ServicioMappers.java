@@ -15,7 +15,7 @@ import gestion.wedding.persistence.entities.ServicioEntity;
 public interface ServicioMappers {
 	
 	@Mapping(source="proveedor", target="idProveedor",qualifiedByName = "mapProveedorid")
-	//@Mapping(source="evento", target="id_evento",qualifiedByName = "mapEventoid")
+	@Mapping(source="evento", target="idEvento",qualifiedByName = "mapEventoid")
 	ServicioDTO mapToServicioDTO(ServicioEntity servicioEntity);
 	
 	
@@ -32,12 +32,12 @@ public interface ServicioMappers {
 		return null;
 	}
 	
-//	@Named("mapEventoid")
-//	default Integer mapEventoid(EventoEntity eventoEntity) {
-//	    if (eventoEntity != null) {
-//	        return eventoEntity.getId_evento();
-//	    } else {
-//	        return null;
-//	    }
-//	}
+	@Named("mapEventoid")
+	default Integer mapEventoid(EventoEntity eventoEntity) {
+	    if (eventoEntity != null) {
+	        return eventoEntity.getId_evento();
+	    } else {
+	        return null;
+	    }
+	}
 }

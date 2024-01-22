@@ -27,4 +27,8 @@ public class ServicioEntity {
 	@ManyToOne 
 	@JoinColumn(name = "id_proveedor")
 	private ProveedorEntity proveedor;
+	
+	@ManyToOne 
+	@JoinColumn(name = "id_evento")
+	private EventoEntity evento;
 }
