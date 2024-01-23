@@ -15,7 +15,7 @@ import gestion.wedding.persistence.entities.ServicioEntity;
 @Mapper(componentModel = "spring", uses = {ServicioMappers.class})
 public interface ProveedorMappers {
 	
-	//@Mapping(target = "servicio", ignore = true)
+	
     ProveedorDTO toDto(ProveedorEntity proveedor);
     
     List<ProveedorDTO> listaToDTO(List<ProveedorEntity> listaEntity);

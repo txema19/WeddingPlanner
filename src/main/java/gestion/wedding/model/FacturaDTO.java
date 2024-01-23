@@ -10,9 +10,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class FacturaDTO {
 
-	private int cod_factura;
+	private int id_factura;
 	private String tarjeta;
 	private Date fecha ;
 	private double precio_final;
+	private int id_evento;
 	
 }
