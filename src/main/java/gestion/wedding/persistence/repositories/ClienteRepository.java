@@ -6,5 +6,7 @@ import gestion.wedding.persistence.entities.ClienteEntity;
 
 @Repository
 public interface ClienteRepository extends JpaRepository<ClienteEntity, Integer> {
+	
+	ClienteEntity findByEmail(String email);
 
 }

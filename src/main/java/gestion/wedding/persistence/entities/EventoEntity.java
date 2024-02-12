@@ -7,6 +7,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
@@ -24,14 +26,18 @@ public class EventoEntity {
     private Integer id_evento;
     private Integer num_invitados;
     private Date fecha;
+    private Double precio;
 
     @OneToOne
     @JoinColumn(name = "id_factura") 
     private FacturaEntity factura;  
 
-    @OneToMany(mappedBy = "evento")
+    @ManyToMany
+    @JoinTable(name = "evento_servicio",
+               joinColumns = @JoinColumn(name = "id_evento"),
+               inverseJoinColumns = @JoinColumn(name = "id_servicio"))
     private List<ServicioEntity> servicios;
 
-    private Integer cod_cliente;
+    private Integer codCliente;
 
 }

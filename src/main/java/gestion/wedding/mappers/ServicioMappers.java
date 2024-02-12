@@ -5,9 +5,7 @@ import java.util.List;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Named;
-
 import gestion.wedding.model.ServicioDTO;
-import gestion.wedding.persistence.entities.EventoEntity;
 import gestion.wedding.persistence.entities.ProveedorEntity;
 import gestion.wedding.persistence.entities.ServicioEntity;
 
@@ -15,9 +13,7 @@ import gestion.wedding.persistence.entities.ServicioEntity;
 public interface ServicioMappers {
 	
 	@Mapping(source="proveedor", target="idProveedor",qualifiedByName = "mapProveedorid")
-	@Mapping(source="evento", target="idEvento",qualifiedByName = "mapEventoid")
-	ServicioDTO mapToServicioDTO(ServicioEntity servicioEntity);
-	
+	ServicioDTO mapToServicioDTO(ServicioEntity servicioEntity);	
 	
 	
 	ServicioEntity mapToServicioEntity(ServicioDTO servicioDTO);
@@ -32,12 +28,5 @@ public interface ServicioMappers {
 		return null;
 	}
 	
-	@Named("mapEventoid")
-	default Integer mapEventoid(EventoEntity eventoEntity) {
-	    if (eventoEntity != null) {
-	        return eventoEntity.getId_evento();
-	    } else {
-	        return null;
-	    }
-	}
+
 }

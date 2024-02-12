@@ -25,4 +25,16 @@ public class ClienteServiceImpl implements ClienteService {
 		return clienteMappers.mapToClienteDTO(clienteEntity);
 	}
 
+	
+	@Override
+	public Integer buscarClientePorEmail(String email) {
+		System.out.println(email);
+	    ClienteEntity clienteEntity = clienteRepository.findByEmail(email);
+	    if (clienteEntity != null) {
+	        return clienteEntity.getCod_cliente();
+	    } else {
+	        return null; // O maneja el caso de cliente no encontrado de alguna otra manera
+	    }
+	}
+
 }

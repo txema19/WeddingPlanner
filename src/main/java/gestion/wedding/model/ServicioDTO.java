@@ -1,5 +1,7 @@
 package gestion.wedding.model;
 
+import java.util.List;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,7 +15,7 @@ public class ServicioDTO {
 	private String nombre;
 	private Double precio;
 	private Integer idProveedor;
-	private Integer idEvento;
+	private List<EventoDTO> evento;
 	
 
 }

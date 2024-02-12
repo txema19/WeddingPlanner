@@ -20,7 +20,7 @@ public class ProveedorEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
-	private int id_proveedor;
+	private Integer id_proveedor;
 	private String nombre;
 	private String dirreccion;
 	private String tln;

@@ -5,4 +5,6 @@ import gestion.wedding.model.ClienteDTO;
 public interface ClienteService {
 
 	ClienteDTO agregarCliente(ClienteDTO clienteDTO);
+	
+	Integer buscarClientePorEmail(String email);
 }

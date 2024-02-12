@@ -17,6 +17,7 @@ public class EventoDTO {
 	private Date fecha;
 	private List<ServicioDTO> servicios;
 	private Integer cod_cliente;
+	private Double precio;
 	
 
 }

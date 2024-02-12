@@ -5,5 +5,7 @@ import gestion.wedding.persistence.entities.EventoEntity;
 
 
 public interface EventoRepository extends JpaRepository<EventoEntity,Integer>{
+	
+	EventoEntity findByCodCliente(Integer codCliente);
 
 }
