@@ -14,5 +14,6 @@ public class ClienteDTO {
 	private String email;
 	private String dir;
 	private String tlf;
+	private EventoDTO evento;
 
 }

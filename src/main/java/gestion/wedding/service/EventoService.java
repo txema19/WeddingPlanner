@@ -6,6 +6,6 @@ public interface EventoService {
 	
 	EventoDTO crearEvento(EventoDTO eventoDTO);
 	
-	Integer buscarEventoPorCodCliente(Integer codCliente);
+	//Integer buscarEventoPorCodCliente(Integer codCliente);
 
 }

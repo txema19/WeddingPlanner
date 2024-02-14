@@ -28,15 +28,15 @@ public class EventoServiceImpl implements EventoService {
 		
 	}
 
-	@Override
-	public Integer buscarEventoPorCodCliente(Integer codCliente) {
-	    // Realiza la consulta en el repositorio de eventos para encontrar un evento con el código de cliente dado
-	    EventoEntity eventoEntity = eventoRepository.findByCodCliente(codCliente);
-	    if (eventoEntity != null) {
-	        return eventoEntity.getId_evento();
-	    } else {
-	        return null; // O maneja el caso de evento no encontrado de alguna otra manera
-	    }
-	}
+//	@Override
+//	public Integer buscarEventoPorCodCliente(Integer codCliente) {
+//	    // Realiza la consulta en el repositorio de eventos para encontrar un evento con el código de cliente dado
+//	    EventoEntity eventoEntity = eventoRepository.findByClienteCod_Cliente(codCliente);
+//	    if (eventoEntity != null) {
+//	        return eventoEntity.getId_evento();
+//	    } else {
+//	        return null; // O maneja el caso de evento no encontrado de alguna otra manera
+//	    }
+//	}
 
 }

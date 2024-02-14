@@ -6,6 +6,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -18,13 +19,14 @@ import lombok.NoArgsConstructor;
 public class FacturaEntity {
 	@Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private int id_factura;
+    private Integer id_factura;
     private String tarjeta;
     private Date fecha;
     private double precio_final;
-    private int id_evento;
+    //private Integer id_evento;
     
-    @OneToOne(mappedBy = "factura")
+    @OneToOne
+    @JoinColumn(name = "id_evento")
     private EventoEntity evento;  
-
+    
 }

@@ -28,6 +28,7 @@ public class FacturaServiceImpl implements FacturaService{
 
 	@Override
 	public FacturaDTO GenerarFactura(FacturaDTO facturaDTO) {
+		
 		Integer EventoId = facturaDTO.getId_evento();
 		
 		Optional<EventoEntity> evento = eventorepository.findById(EventoId);
@@ -37,7 +38,7 @@ public class FacturaServiceImpl implements FacturaService{
 			facturaEntity.setEvento(evento.get());
 			facturarepository.save(facturaEntity);
 
-			return facturamapper.toDto(facturaEntity);
+			return facturamapper.toDTO(facturaEntity);
 		}
 		return null;
 

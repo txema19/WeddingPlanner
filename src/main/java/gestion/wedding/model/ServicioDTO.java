@@ -14,7 +14,7 @@ public class ServicioDTO {
 	private Integer id_servicio;
 	private String nombre;
 	private Double precio;
-	private Integer idProveedor;
+	private Integer idProveedor; //tiene el id de provee
 	private List<EventoDTO> evento;
 	
 

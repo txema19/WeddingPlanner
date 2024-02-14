@@ -9,6 +9,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
@@ -28,9 +29,9 @@ public class EventoEntity {
     private Date fecha;
     private Double precio;
 
-    @OneToOne
-    @JoinColumn(name = "id_factura") 
-    private FacturaEntity factura;  
+    //
+    @OneToMany(mappedBy = "evento") 
+    private List<FacturaEntity> factura;  
 
     @ManyToMany
     @JoinTable(name = "evento_servicio",
@@ -38,6 +39,8 @@ public class EventoEntity {
                inverseJoinColumns = @JoinColumn(name = "id_servicio"))
     private List<ServicioEntity> servicios;
 
-    private Integer codCliente;
+    @OneToOne 
+	@JoinColumn(name = "cod_cliente")
+    private ClienteEntity cliente;
 
 }

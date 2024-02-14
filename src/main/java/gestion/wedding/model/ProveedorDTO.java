@@ -13,7 +13,7 @@ public class ProveedorDTO {
 	
 		
 			
-	private int id_proveedor;
+	private Integer id_proveedor;
 	private String nombre;
 	private String dirreccion;
 	private String tln;

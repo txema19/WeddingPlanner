@@ -37,7 +37,9 @@ public class GeneralController {
 		clienteDTO.setDir(generalDTO.getDireccion());
 		clienteDTO.setTlf(generalDTO.getTelefono());
 		
-		clienteService.agregarCliente(clienteDTO);
+		ClienteDTO cliente = clienteService.agregarCliente(clienteDTO);
+		
+		
 
 		try {
 			Thread.sleep(1000);
@@ -45,17 +47,17 @@ public class GeneralController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		Integer codigoCliente = clienteService.buscarClientePorEmail(generalDTO.getEmail());
+		//Integer codigoCliente = clienteService.buscarClientePorEmail(generalDTO.getEmail());
 		
 		
 		EventoDTO eventoDTO = new EventoDTO();
 		eventoDTO.setNum_invitados(generalDTO.getNumeroInvitados());
 		eventoDTO.setFecha(generalDTO.getFechaEvento());
-		eventoDTO.setCod_cliente(codigoCliente);
+		eventoDTO.setCod_cliente(cliente.getCod_cliente());
 		eventoDTO.setServicios(generalDTO.getListaServicios());
 		eventoDTO.setPrecio(generalDTO.getPrecioTotal());
 		
-		eventoService.crearEvento(eventoDTO);
+		EventoDTO evento = eventoService.crearEvento(eventoDTO);
 		
 		try {
 			Thread.sleep(1000);
@@ -63,13 +65,13 @@ public class GeneralController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		Integer codigoEvento = eventoService.buscarEventoPorCodCliente(codigoCliente);
-		System.out.println(codigoEvento+"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!????????????????????????????????????!");
+		//Integer codigoEvento = eventoService.buscarEventoPorCodCliente(codigoCliente);
+		//System.out.println(codigoEvento+"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!????????????????????????????????????!");
 		FacturaDTO facturaDTO = new FacturaDTO();
 		
 		facturaDTO.setTarjeta(generalDTO.getTarjeta());
 		facturaDTO.setPrecio_final(generalDTO.getPrecioFactura());
-		facturaDTO.setId_evento(codigoEvento);
+		facturaDTO.setId_evento(evento.getId_evento());;
 		
 		facturaService.GenerarFactura(facturaDTO);
 		

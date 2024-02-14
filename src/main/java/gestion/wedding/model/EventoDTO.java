@@ -19,5 +19,8 @@ public class EventoDTO {
 	private Integer cod_cliente;
 	private Double precio;
 	
+	//
+	private List<FacturaDTO> factura;
+	
 
 }
