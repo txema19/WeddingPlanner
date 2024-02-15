@@ -1,5 +1,8 @@
 package gestion.wedding.service;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,16 +28,37 @@ public class ClienteServiceImpl implements ClienteService {
 		return clienteMappers.mapToClienteDTO(clienteEntity);
 	}
 
-	
 	@Override
 	public Integer buscarClientePorEmail(String email) {
 		System.out.println(email);
-	    ClienteEntity clienteEntity = clienteRepository.findByEmail(email);
-	    if (clienteEntity != null) {
-	        return clienteEntity.getCod_cliente();
-	    } else {
-	        return null; // O maneja el caso de cliente no encontrado de alguna otra manera
-	    }
+		ClienteEntity clienteEntity = clienteRepository.findByEmail(email);
+		if (clienteEntity != null) {
+			return clienteEntity.getCod_cliente();
+		} else {
+			return null;
+		}
+	}
+
+	@Override
+	public List<ClienteDTO> mostrarTodosLoscliente() {
+
+		List<ClienteEntity> listaClientes = clienteRepository.findAll();
+
+		List<ClienteDTO> listaClientesDTO = clienteMappers.listaToDTO(listaClientes);
+
+		return listaClientesDTO;
+	}
+
+	@Override
+	public ClienteDTO buscarClientePorId(Integer clienteId) {
+		
+		Optional<ClienteEntity> clienteEntity = clienteRepository.findById(clienteId);
+		
+		if(clienteEntity.isPresent()) {
+			return clienteMappers.mapToClienteDTO(clienteEntity.get());
+		}
+		
+		return null;
 	}
 
 }

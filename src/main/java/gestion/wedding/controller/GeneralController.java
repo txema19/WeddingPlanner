@@ -18,68 +18,59 @@ import gestion.wedding.service.FacturaService;
 @RestController
 @RequestMapping("/general")
 public class GeneralController {
-	
+
 	@Autowired
 	EventoService eventoService;
-	
+
 	@Autowired
 	ClienteService clienteService;
-	
+
 	@Autowired
 	FacturaService facturaService;
-	
+
 	@PostMapping
-	ResponseEntity<?> crearEvento(@RequestBody GeneralDTO generalDTO){
-		
+	ResponseEntity<?> crearEvento(@RequestBody GeneralDTO generalDTO) {
+
 		ClienteDTO clienteDTO = new ClienteDTO();
 		clienteDTO.setNombre(generalDTO.getNombreCliente());
 		clienteDTO.setEmail(generalDTO.getEmail());
 		clienteDTO.setDir(generalDTO.getDireccion());
 		clienteDTO.setTlf(generalDTO.getTelefono());
-		
+
 		ClienteDTO cliente = clienteService.agregarCliente(clienteDTO);
-		
-		
 
 		try {
 			Thread.sleep(1000);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		//Integer codigoCliente = clienteService.buscarClientePorEmail(generalDTO.getEmail());
-		
-		
+
 		EventoDTO eventoDTO = new EventoDTO();
 		eventoDTO.setNum_invitados(generalDTO.getNumeroInvitados());
 		eventoDTO.setFecha(generalDTO.getFechaEvento());
 		eventoDTO.setCod_cliente(cliente.getCod_cliente());
 		eventoDTO.setServicios(generalDTO.getListaServicios());
 		eventoDTO.setPrecio(generalDTO.getPrecioTotal());
-		
+
 		EventoDTO evento = eventoService.crearEvento(eventoDTO);
-		
+
 		try {
 			Thread.sleep(1000);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		//Integer codigoEvento = eventoService.buscarEventoPorCodCliente(codigoCliente);
-		//System.out.println(codigoEvento+"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!????????????????????????????????????!");
+
 		FacturaDTO facturaDTO = new FacturaDTO();
-		
+
 		facturaDTO.setTarjeta(generalDTO.getTarjeta());
 		facturaDTO.setPrecio_final(generalDTO.getPrecioFactura());
-		facturaDTO.setId_evento(evento.getId_evento());;
-		
+		facturaDTO.setId_evento(evento.getId_evento());
+		;
+
 		facturaService.GenerarFactura(facturaDTO);
-		
+
 		return ResponseEntity.ok("Evento creado exitosamente");
-		
-		
-		
+
 	}
-	
 
 }
