@@ -8,4 +8,6 @@ import gestion.wedding.model.ProveedorDTO;
 public interface ProveedorService {
 
 	ProveedorDTO agregarProveedor(ProveedorDTO proveedorDTO);
+	
+	ProveedorDTO getProveedorPorId(Integer id);
 }

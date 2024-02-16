@@ -25,9 +25,9 @@ public class ServicioController {
 	@PostMapping
 	ResponseEntity<?> agregarServicio(@RequestBody ServicioDTO ServicioDTO){
 		
-		ServicioDTO servicio = servicioService.agregarServicio(ServicioDTO);
+		servicioService.agregarServicio(ServicioDTO);
 		
-		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/"+servicio.getId_servicio()).buildAndExpand(servicio.getNombre())
+		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/"+ServicioDTO.getId_servicio()).buildAndExpand(ServicioDTO.getNombre())
 				.toUri();
 		
 		return ResponseEntity.created(location).build();

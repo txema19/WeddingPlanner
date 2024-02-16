@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+import gestion.wedding.exceptions.ProveedorNotFoundExcepcion;
 import gestion.wedding.mappers.ServicioMappers;
 import gestion.wedding.model.ProveedorDTO;
 import gestion.wedding.model.ServicioDTO;
@@ -16,45 +17,52 @@ import gestion.wedding.persistence.repositories.ProveedorRepository;
 import gestion.wedding.persistence.repositories.ServicioRepository;
 
 @Service
-public class ServicioServiceImpl implements ServicioService{
+public class ServicioServiceImpl implements ServicioService {
 
 	@Autowired
 	ServicioRepository servicioRepository;
-	
+
 	@Autowired
 	ServicioMappers servicioMappers;
-	
+
 	@Autowired
 	ProveedorRepository proveedorRepository;
-	
-	
+
+	@Autowired
+	ProveedorService proveedorService;
+
 	@Override
-	public ServicioDTO agregarServicio(ServicioDTO servicioDTO) {
-		
-		Integer proveedorId = servicioDTO.getIdProveedor();
-		
-		Optional<ProveedorEntity> proveedor = proveedorRepository.findById(proveedorId);
+	public void agregarServicio(ServicioDTO servicioDTO) {
+		if (proveedorService.getProveedorPorId(servicioDTO.getIdProveedor()) != null) {
 
-		if (proveedor.isPresent()) {
-			ServicioEntity servicioEntity = servicioMappers.mapToServicioEntity(servicioDTO);
-			servicioEntity.setProveedor(proveedor.get());
-			servicioRepository.save(servicioEntity);
+			Integer proveedorId = servicioDTO.getIdProveedor();
 
-			return servicioMappers.mapToServicioDTO(servicioEntity);
+			Optional<ProveedorEntity> proveedor = proveedorRepository.findById(proveedorId);
+
+			if (proveedor.isPresent()) {
+				ServicioEntity servicioEntity = servicioMappers.mapToServicioEntity(servicioDTO);
+				servicioEntity.setProveedor(proveedor.get());
+				servicioRepository.save(servicioEntity);
+
+				//return servicioMappers.mapToServicioDTO(servicioEntity);
+
+			}
+
+		} else {
+			throw new ProveedorNotFoundExcepcion("No existe ese proovedor, debes crearlo antes de crear el servicio.");
 		}
 
-		
-		return null; // habra que hacer una excepcion
-	
+		//return null; // habra que hacer una excepcion
+
 	}
 
 	@Override
 	public List<ServicioDTO> mostrarTodosLosServicios() {
-		
+
 		List<ServicioEntity> listaServicos = servicioRepository.findAll();
-		
+
 		List<ServicioDTO> listaServicossDTO = servicioMappers.listaToDTO(listaServicos);
-		
+
 		return listaServicossDTO;
 	}
 

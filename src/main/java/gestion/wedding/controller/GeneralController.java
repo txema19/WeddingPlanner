@@ -39,11 +39,7 @@ public class GeneralController {
 
 		ClienteDTO cliente = clienteService.agregarCliente(clienteDTO);
 
-		try {
-			Thread.sleep(1000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
+		
 
 		EventoDTO eventoDTO = new EventoDTO();
 		eventoDTO.setNum_invitados(generalDTO.getNumeroInvitados());
@@ -54,11 +50,7 @@ public class GeneralController {
 
 		EventoDTO evento = eventoService.crearEvento(eventoDTO);
 
-		try {
-			Thread.sleep(1000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
+		
 
 		FacturaDTO facturaDTO = new FacturaDTO();
 

@@ -6,7 +6,7 @@ import gestion.wedding.model.ServicioDTO;
 
 public interface ServicioService {
 
-	ServicioDTO agregarServicio(ServicioDTO servicioDTO);
+	void agregarServicio(ServicioDTO servicioDTO);
 	
 	List<ServicioDTO> mostrarTodosLosServicios();
 }

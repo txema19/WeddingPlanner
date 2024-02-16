@@ -1,5 +1,7 @@
 package gestion.wedding.service;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,6 +25,18 @@ public class ProveedorServiceImpl implements ProveedorService{
 		ProveedorEntity proveedorEntity = proveedorRepository.save(proveedorMappers.toEntity(proveedorDTO));
 		
 		return proveedorMappers.toDto(proveedorEntity);
+	}
+
+	@Override
+	public ProveedorDTO getProveedorPorId(Integer id) {
+		
+		Optional<ProveedorEntity> proveedor = proveedorRepository.findById(id);
+		
+		if(proveedor.isPresent()) {
+			ProveedorDTO proveedorDTO = proveedorMappers.toDto(proveedor.get());
+			return proveedorDTO;
+		}
+		return null;
 	}
 
 }
