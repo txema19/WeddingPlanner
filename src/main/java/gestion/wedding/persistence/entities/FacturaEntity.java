@@ -1,6 +1,7 @@
 package gestion.wedding.persistence.entities;
 
 import java.sql.Date;
+import java.time.LocalDate;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -21,7 +22,7 @@ public class FacturaEntity {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Integer id_factura;
     private String tarjeta;
-    private Date fecha;
+    private LocalDate fecha;
     private double precio_final;
     //private Integer id_evento;
     

@@ -1,5 +1,8 @@
 package gestion.wedding.controller;
 
+import java.time.LocalDate;
+import java.time.ZoneOffset;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -57,6 +60,7 @@ public class GeneralController {
 		facturaDTO.setTarjeta(generalDTO.getTarjeta());
 		facturaDTO.setPrecio_final(generalDTO.getPrecioFactura());
 		facturaDTO.setId_evento(evento.getId_evento());
+		facturaDTO.setFecha(LocalDate.now());
 		;
 
 		facturaService.GenerarFactura(facturaDTO);
