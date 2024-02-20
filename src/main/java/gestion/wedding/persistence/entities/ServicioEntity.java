@@ -32,6 +32,5 @@ public class ServicioEntity {
 	@JoinColumn(name = "id_proveedor")
 	private ProveedorEntity proveedor; //tiene el id de provee
 	
-	@ManyToMany(mappedBy = "servicios")
-    private List<EventoEntity> eventos;
+	
 }

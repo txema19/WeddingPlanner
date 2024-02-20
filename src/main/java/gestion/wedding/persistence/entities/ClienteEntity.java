@@ -25,7 +25,7 @@ public class ClienteEntity {
 	private String dir;
 	private String tlf;
 	
-	@OneToOne(mappedBy = "cliente")
+	@OneToOne
 	private EventoEntity evento;
 	
 }
