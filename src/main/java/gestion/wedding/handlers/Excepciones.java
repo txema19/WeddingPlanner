@@ -28,7 +28,12 @@ public class Excepciones {
 		return problemDetail;
 	}
 	
-
+	@ExceptionHandler(DataIntegrityViolationException.class)
+    public ResponseEntity<Object> handleDataIntegrityViolationException(DataIntegrityViolationException ex) {
+        // Aquí puedes personalizar la respuesta de error según tus necesidades
+        String errorMessage = "El servicio que quiere incluirse en el evento no está creado";
+        return new ResponseEntity<>(errorMessage, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
 	
 	
 	
