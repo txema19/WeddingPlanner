@@ -51,13 +51,13 @@ public class ClienteServiceImpl implements ClienteService {
 
 	@Override
 	public ClienteDTO buscarClientePorId(Integer clienteId) {
-		
+
 		Optional<ClienteEntity> clienteEntity = clienteRepository.findById(clienteId);
-		
-		if(clienteEntity.isPresent()) {
+
+		if (clienteEntity.isPresent()) {
 			return clienteMappers.mapToClienteDTO(clienteEntity.get());
 		}
-		
+
 		return null;
 	}
 

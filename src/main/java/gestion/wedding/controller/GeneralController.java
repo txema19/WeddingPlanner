@@ -5,6 +5,7 @@ import java.time.ZoneOffset;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,7 +33,7 @@ public class GeneralController {
 	FacturaService facturaService;
 
 	@PostMapping
-	ResponseEntity<?> crearEvento(@RequestBody GeneralDTO generalDTO) {
+	ResponseEntity<?> crearEvento(@RequestBody @Validated GeneralDTO generalDTO) {
 
 		ClienteDTO clienteDTO = new ClienteDTO();
 		clienteDTO.setNombre(generalDTO.getNombreCliente());
@@ -56,9 +57,11 @@ public class GeneralController {
 		
 
 		FacturaDTO facturaDTO = new FacturaDTO();
+		
+		Double precioFinalIVA = generalDTO.getPrecioTotal()*1.21;
 
 		facturaDTO.setTarjeta(generalDTO.getTarjeta());
-		facturaDTO.setPrecio_final(generalDTO.getPrecioFactura());
+		facturaDTO.setPrecio_final(precioFinalIVA);
 		facturaDTO.setId_evento(evento.getId_evento());
 		facturaDTO.setFecha(LocalDate.now());
 		;
